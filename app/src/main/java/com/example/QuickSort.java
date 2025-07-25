@@ -1,6 +1,6 @@
-package com.example.util;
+package com.example;
 
-public class QuickSort {
+public class QuickSort implements SortAlgorithm {
     /**
      * QuickSortで並び替えを行う
      * 
@@ -8,7 +8,7 @@ public class QuickSort {
      * @param left  並び替えを行う左側のindex
      * @param right 並び替えを行う右側のindex
      */
-    public static void sort(int[] array, int left, int right) {
+    public void sort(int[] array, int left, int right) {
         if (right <= left) {
             return;
         }
