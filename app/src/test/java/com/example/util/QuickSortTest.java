@@ -2,10 +2,17 @@ package com.example.util;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+import java.util.Arrays;
+import java.util.Random;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class QuickSortTest {
+    /**
+     * 2つの値の並び替えのテスト
+     */
     @ParameterizedTest
     @CsvSource({
             "1, 2",
@@ -22,6 +29,9 @@ public class QuickSortTest {
         assertArrayEquals(expected, actual);
     }
 
+    /**
+     * 3つの値の並び替えのテスト
+     */
     @ParameterizedTest
     @CsvSource({
             "1, 2, 3",
@@ -42,6 +52,9 @@ public class QuickSortTest {
         assertArrayEquals(expected, actual);
     }
 
+    /**
+     * 4つの値の並び替えのテスト
+     */
     @ParameterizedTest
     @CsvSource({
             "1, 2, 3, 4",
@@ -78,5 +91,30 @@ public class QuickSortTest {
         QuickSort.sort(actual, left, right);
 
         assertArrayEquals(expected, actual);
+    }
+
+    /**
+     * ランダムの値のソートのテスト
+     */
+    @Test
+    public void sortRandom() {
+        int size = 50;
+        int[] original = generateRandomArray(size);
+        int[] expected = Arrays.copyOf(original, original.length);
+        Arrays.sort(expected); // Java標準の正しいソート
+
+        int[] actual = Arrays.copyOf(original, original.length);
+        QuickSort.sort(actual, 0, actual.length - 1);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    private int[] generateRandomArray(int size) {
+        Random random = new Random();
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
+            result[i] = random.nextInt(10000) - 5000; // -5000〜4999の乱数
+        }
+        return result;
     }
 }
