@@ -1,6 +1,6 @@
-package com.example.util;
+package com.example;
 
-public class MergeSort {
+public class MergeSort implements SortAlgorithm {
     private static final int LEFT_INDEX = 0;
     private static final int MIN_ARRAY_SIZE = 1;
 
@@ -11,7 +11,7 @@ public class MergeSort {
      * @param left  並び替行う左側のindex
      * @param right 並び替えを行う右側のindex
      */
-    public static void sort(int[] array, int left, int right) {
+    public void sort(int[] array, int left, int right) {
         if (array.length <= MIN_ARRAY_SIZE) {
             return;
         }
@@ -37,7 +37,7 @@ public class MergeSort {
      * @param leftArray  右配列
      * @param rightArray 左配列
      */
-    private static void merge(int[] array, int[] leftArray, int[] rightArray) {
+    private void merge(int[] array, int[] leftArray, int[] rightArray) {
         int arrayIndex = 0;
         int leftArrayIndex = 0;
         int rightArrayIndex = 0;

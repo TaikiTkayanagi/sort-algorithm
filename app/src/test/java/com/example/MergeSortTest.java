@@ -1,4 +1,4 @@
-package com.example.util;
+package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class QuickSortTest {
+public class MergeSortTest {
     /**
      * 2つの値の並び替えのテスト
      */
@@ -24,7 +24,7 @@ public class QuickSortTest {
         int right = actual.length - 1;
         int[] expected = { 1, 2 };
 
-        QuickSort.sort(actual, left, right);
+        new MergeSort().sort(actual, left, right);
 
         assertArrayEquals(expected, actual);
     }
@@ -47,7 +47,7 @@ public class QuickSortTest {
         int right = actual.length - 1;
         int[] expected = { 1, 2, 3 };
 
-        QuickSort.sort(actual, left, right);
+        new MergeSort().sort(actual, left, right);
 
         assertArrayEquals(expected, actual);
     }
@@ -88,7 +88,7 @@ public class QuickSortTest {
         int right = actual.length - 1;
         int[] expected = { 1, 2, 3, 4 };
 
-        QuickSort.sort(actual, left, right);
+        new MergeSort().sort(actual, left, right);
 
         assertArrayEquals(expected, actual);
     }
@@ -104,7 +104,7 @@ public class QuickSortTest {
         Arrays.sort(expected); // Java標準の正しいソート
 
         int[] actual = Arrays.copyOf(original, original.length);
-        QuickSort.sort(actual, 0, actual.length - 1);
+        new MergeSort().sort(actual, 0, actual.length - 1);
 
         assertArrayEquals(expected, actual);
     }
